@@ -1,0 +1,57 @@
+{% include 'header.html.twig' %}
+
+<div id="content" class="container" role="main">
+    <div class="row">
+        <div class="span8">
+
+            {% if (have_posts()) %}
+
+                <h2 class="pagetitle">{{ __('Search Results', 'kubrick') }}</h2>
+
+                <ul class="post-navigation">
+                    {% set previous = next_posts_link('← Older entries', 'kubrick') %}
+                    {% if previous %}
+                        <li class="previous">{{ previous|raw }}</li>
+                    {% endif %}
+                    {% set next = next_posts_link('Newer entries  →', 'kubrick') %}
+                    {% if next %}
+                        <li class="next">{{ next|raw }}</li>
+                    {% endif %}
+                </ul>
+
+        		{% for post in loop %}
+        			<div {{ post_class() }}>
+        				<h3 id="post-{{ the_ID() }}">
+                            <a href="{{ the_permalink() }}" rel="bookmark" title="{{ the_title_attribute() }}">{{ the_title() }}</a>
+                            <small class="pull-right">{{ the_time(__('l, F jS, Y', 'kubrick')) }}</small>
+                        </h3>
+
+                        <div class="entry">
+                            {{ the_content('<p class="serif">' ~ __('Read the rest of this entry &raquo;', 'kubrick') ~ '</p>') }}
+                        </div>
+
+                        <p class="postmetadata">
+                            {# the_tags('Tags: ', ', ', '<br />') #}
+                            {# __('Posted in') }} {{ get_the_category_list(', ') }} | #}
+                            <i class="symbol">edit</i> {{ edit_post_link('Edit', '', ' | ') }}
+                            <i class="symbol">comments</i> {{ comments_popup_link('No Comments', '1 Comment', '% Comments', '', 'Comments Closed' ) }}
+                        </p>
+        			</div>
+        		{% endfor %}
+
+        		<div class="navigation">
+        			<div class="alignleft">{{ next_posts_link(__('&laquo; Older Entries', 'kubrick')) }}</div>
+        			<div class="alignright">{{ previous_posts_link(__('Newer Entries &raquo;', 'kubrick')) }}</div>
+        		</div>
+        	{% else %}
+                <h2 class="center">{{ __('No posts found. Try a different search?', 'kubrick') }}</h2>
+                {% include 'searchform.html.twig' %}
+        	{% endif %}
+        </div>
+        <div class="span4">
+            {% include 'sidebar.html.twig' %}
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html.twig' %}

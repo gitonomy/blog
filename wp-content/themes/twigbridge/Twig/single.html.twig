@@ -1,0 +1,52 @@
+{% include 'header.html.twig' %}
+
+<div id="content" class="container" role="main">
+    <div class="row">
+        <div class="span8">
+
+		    {% if have_posts() %}
+		        {% for post in loop %}
+					<ul class="post-navigation">
+						{% set previous = previous_post_link('← %link') %}
+						{% if previous %}
+							<li class="previous">{{ previous|raw }}</li>
+						{% endif %}
+						{% set next = next_post_link('%link →') %}
+						{% if next %}
+							<li class="next">{{ next|raw }}</li>
+						{% endif %}
+					</ul>
+
+					<div {{ post_class() }} id="post-{{ the_ID() }}">
+						<h2>
+							{{ the_title() }}
+							<small class="pull-right">{{ the_time(__('l, F jS, Y', 'kubrick')) }}</small>
+						</h2>
+
+						<div class="entry">
+							{{ the_content('<p class="serif">' ~ __('Read the rest of this entry &raquo;', 'kubrick') ~ '</p>') }}
+
+							<p class="postmetadata alt">
+								<small>
+									You can follow any responses to this entry through the <a href='{{ get_post_comments_feed_link() }}'>RSS 2.0</a> feed.
+
+									{{ edit_post_link(__('Edit this entry', 'kubrick'),'','.') }}
+								</small>
+							</p>
+						</div>
+					</div>
+
+					{{ comments_template() }}
+
+				{% endfor %}
+			{% else %}
+				<p>{{ __('Sorry, no posts matched your criteria.', 'kubrick') }}</p>
+			{% endif %}
+		</div>
+        <div class="span4">
+            {% include 'sidebar.html.twig' %}
+        </div>
+	</div>
+</div>
+
+{% include 'footer.html.twig' %}

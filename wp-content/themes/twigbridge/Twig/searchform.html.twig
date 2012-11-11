@@ -1,0 +1,10 @@
+{% set content %}
+    <div class="well">
+        <form role="search" method="get" id="searchform" action="{{ home_url_esc('/') }}" class="form-search">
+            <input type="text" value="{{ get_search_query() }}" name="s" id="s" class="input-medium search-query" />
+            <button type="submit" id="searchsubmit" class="btn">{{ __('Search') }}</button>
+        </form>
+    </div>
+{% endset %}
+
+{{ filter_search_form(content) }}

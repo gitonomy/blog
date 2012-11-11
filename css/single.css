@@ -1,0 +1,35 @@
+#page #content {
+    margin-top: 20px;
+}
+
+.post-navigation {
+    overflow: hidden;
+}
+
+.post-navigation li {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}
+
+.post-navigation li:hover {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.post-navigation li.next {
+  float: right;
+}
+
+.post-navigation li.previous {
+  float: left;
+}
+
+
+.comment-meta {
+    float:right;
+}
