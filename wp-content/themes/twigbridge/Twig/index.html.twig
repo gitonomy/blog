@@ -4,7 +4,6 @@
     <div class="row">
         <div class="span8">
             {% if (have_posts()) %}
-
             	{% for post in loop %}
                     <div {{ post_class() }} id="post-{{ the_ID() }}">
                         <h2>
@@ -18,7 +17,7 @@
             			<p class="postmetadata">
             			    {# the_tags('Tags: ', ', ', '<br />') #}
             			    {# __('Posted in') }} {{ get_the_category_list(', ') }} | #}
-                            <i class="symbol">edit</i> {{ edit_post_link('Edit', '', ' | ') }}
+                            {{ edit_post_link('Edit', '<i class="symbol">edit</i> ', ' | ') }}
             			    <i class="symbol">comments</i> {{ comments_popup_link('No Comments', '1 Comment', '% Comments', '', 'Comments Closed' ) }}
             			</p>
                     </div>
