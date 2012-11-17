@@ -21,6 +21,7 @@
             			    <i class="symbol">comments</i> {{ comments_popup_link('No Comments', '1 Comment', '% Comments', '', 'Comments Closed' ) }}
             			</p>
                     </div>
+                    {{ debug(loop.next) }}
             	{% endfor %}
 
                 <div class="navigation">

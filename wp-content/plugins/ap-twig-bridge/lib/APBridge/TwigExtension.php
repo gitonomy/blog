@@ -31,6 +31,7 @@ class APBridge_TwigExtension extends Twig_Extension {
 			'is_date' => new Twig_Function_Function('is_date'),
 			'is_home' => new Twig_Function_Function('is_home'),
 			'is_page' => new Twig_Function_Function('is_page'),
+			'debug' => new Twig_Function_Function('var_dump'),
 
 			'wp_register' => new Twig_Function_Method($this, 'wpRegister', array('is_safe' => array('html'))),
 			'wp_loginout' => new Twig_Function_Method($this, 'wpLoginout', array('is_safe' => array('html'))),
